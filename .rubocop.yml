@@ -232,14 +232,6 @@ Style/SingleLineMethods:
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-single-line-methods
   Enabled: false
   AllowIfMethodIsEmpty: true
-Style/StringLiterals:
-  Description: Checks if uses of quotes match the configured preference.
-  StyleGuide: https://github.com/bbatsov/ruby-style-guide#consistent-string-literals
-  Enabled: true
-  EnforcedStyle: single_quotes
-  SupportedStyles:
-  - single_quotes
-  - double_quotes
 Style/TrailingCommaInArguments:
   Description: Checks for trailing comma in argument lists.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-trailing-array-commas
@@ -845,11 +837,247 @@ Lint/MissingSuper:
                   This cop checks for the presence of constructors and lifecycle callbacks
                   without calls to `super`'.
   Enabled: false
+Style/ArgumentsForwarding:
+  Description: 'Use arguments forwarding.'
+  StyleGuide: '#arguments-forwarding'
+  Enabled: true
+  AllowOnlyRestArgument: true
+  VersionAdded: '1.1'
+Style/CollectionCompact:
+  Description: 'Use `{Array,Hash}#{compact,compact!}` instead of custom logic to reject nils.'
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.2'
+  VersionChanged: '1.3'
+Style/DocumentDynamicEvalDefinition:
+  Description: >-
+                When using `class_eval` (or other `eval`) with string interpolation,
+                add a comment block showing its appearance if interpolated.
+  StyleGuide: '#eval-comment-docs'
+  Enabled: true
+  VersionAdded: '1.1'
+  VersionChanged: '1.3'
+Style/EmptyHeredoc:
+  Description: 'Checks for using empty heredoc to reduce redundancy.'
+  Enabled: true
+  VersionAdded: '1.32'
+Style/EndlessMethod:
+  Description: 'Avoid the use of multi-lined endless method definitions.'
+  StyleGuide: '#endless-methods'
+  Enabled: true
+  VersionAdded: '1.8'
+  EnforcedStyle: allow_single_line
+  SupportedStyles:
+    - allow_single_line
+    - allow_always
+    - disallow
+Style/EnvHome:
+  Description: "Checks for consistent usage of `ENV['HOME']`."
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.29'
+Style/FetchEnvVar:
+  Description: >-
+                 Suggests `ENV.fetch` for the replacement of `ENV[]`.
+  Reference:
+    - https://rubystyle.guide/#hash-fetch-defaults
+  Enabled: true
+  VersionAdded: '1.28'
+  # Environment variables to be excluded from the inspection.
+  AllowedVars: []
+Style/FileRead:
+  Description: 'Favor `File.(bin)read` convenience methods.'
+  StyleGuide: '#file-read'
+  Enabled: true
+  VersionAdded: '1.24'
+Style/FileWrite:
+  Description: 'Favor `File.(bin)write` convenience methods.'
+  StyleGuide: '#file-write'
+  Enabled: true
+  VersionAdded: '1.24'
+Style/HashConversion:
+  Description: 'Avoid Hash[] in favor of ary.to_h or literal hashes.'
+  StyleGuide: '#avoid-hash-constructor'
+  Enabled: true
+  VersionAdded: '1.10'
+  VersionChanged: '1.11'
+  AllowSplatArgument: true
+Style/HashExcept:
+  Description: >-
+                 Checks for usages of `Hash#reject`, `Hash#select`, and `Hash#filter` methods
+                 that can be replaced with `Hash#except` method.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.7'
+  VersionChanged: '1.39'
+Style/IfWithBooleanLiteralBranches:
+  Description: 'Checks for redundant `if` with boolean literal branches.'
+  Enabled: true
+  VersionAdded: '1.9'
+  SafeAutoCorrect: false
+  AllowedMethods:
+    - nonzero?
+Style/InPatternThen:
+  Description: 'Checks for `in;` uses in `case` expressions.'
+  StyleGuide: '#no-in-pattern-semicolons'
+  Enabled: true
+  VersionAdded: '1.16'
+Style/MagicCommentFormat:
+  Description: 'Use a consistent style for magic comments.'
+  Enabled: true
+  VersionAdded: '1.35'
+  EnforcedStyle: snake_case
+  SupportedStyles:
+    # `snake` will enforce the magic comment is written
+    # in snake case (words separated by underscores).
+    # Eg: froze_string_literal: true
+    - snake_case
+    # `kebab` will enforce the magic comment is written
+    # in kebab case (words separated by hyphens).
+    # Eg: froze-string-literal: true
+    - kebab_case
+  DirectiveCapitalization: lowercase
+  ValueCapitalization: ~
+  SupportedCapitalizations:
+    - lowercase
+    - uppercase
+Style/MapCompactWithConditionalBlock:
+  Description: 'Prefer `select` or `reject` over `map { ... }.compact`.'
+  Enabled: true
+  VersionAdded: '1.30'
+Style/MapToHash:
+  Description: 'Prefer `to_h` with a block over `map.to_h`.'
+  Enabled: true
+  VersionAdded: '1.24'
+  Safe: false
+Style/MultilineInPatternThen:
+  Description: 'Do not use `then` for multi-line `in` statement.'
+  StyleGuide: '#no-then'
+  Enabled: true
+  VersionAdded: '1.16'
+Style/NegatedIfElseCondition:
+  Description: >-
+                Checks for uses of `if-else` and ternary operators with a negated condition
+                which can be simplified by inverting condition and swapping branches.
+  Enabled: true
+  VersionAdded: '1.2'
+Style/NestedFileDirname:
+  Description: 'Checks for nested `File.dirname`.'
+  Enabled: true
+  VersionAdded: '1.26'
+Style/NilLambda:
+  Description: 'Prefer `-> {}` to `-> { nil }`.'
+  Enabled: true
+  VersionAdded: '1.3'
+  VersionChanged: '1.15'
+Style/NumberedParameters:
+  Description: 'Restrict the usage of numbered parameters.'
+  Enabled: true
+  VersionAdded: '1.22'
+  EnforcedStyle: allow_single_line
+  SupportedStyles:
+    - allow_single_line
+    - disallow
+Style/NumberedParametersLimit:
+  Description: 'Avoid excessive numbered params in a single block.'
+  Enabled: true
+  VersionAdded: '1.22'
+  Max: 1
+Style/ObjectThen:
+  Description: 'Enforces the use of consistent method names `Object#yield_self` or `Object#then`.'
+  StyleGuide: '#object-yield-self-vs-object-then'
+  Enabled: true
+  VersionAdded: '1.28'
+  # Use `Object#yield_self` or `Object#then`?
+  # Prefer `Object#yield_self` to `Object#then` (yield_self)
+  # Prefer `Object#then` to `Object#yield_self` (then)
+  EnforcedStyle: 'then'
+  SupportedStyles:
+    - then
+    - yield_self
+Style/OpenStructUse:
+  Description: >-
+                 Avoid using OpenStruct. As of Ruby 3.0, use is officially discouraged due to performance,
+                 version compatibility, and potential security issues.
+  Reference:
+    - https://docs.ruby-lang.org/en/3.0.0/OpenStruct.html#class-OpenStruct-label-Caveats
+
+  Enabled: true
+  VersionAdded: '1.23'
+Style/QuotedSymbols:
+  Description: 'Use a consistent style for quoted symbols.'
+  Enabled: true
+  VersionAdded: '1.16'
+  EnforcedStyle: same_as_string_literals
+  SupportedStyles:
+    - same_as_string_literals
+    - single_quotes
+    - double_quotes
+Style/RedundantArgument:
+  Description: 'Check for a redundant argument passed to certain methods.'
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.4'
+  VersionChanged: '1.40'
+  Methods:
+    # Array#join
+    join: ''
+    # Array#sum
+    sum: 0
+    # String#split
+    split: ' '
+    # String#chomp
+    chomp: "\n"
+    # String#chomp!
+    chomp!: "\n"
 Style/RedundantFileExtensionInRequire:
   Description: >-
                   Checks for the presence of superfluous `.rb` extension in
                   the filename provided to `require` and `require_relative`.
-  Enabled: false
+  StyleGuide: '#no-explicit-rb-to-require'
+  Enabled: true
+  VersionAdded: '0.88'
+Style/RedundantInitialize:
+  Description: 'Checks for redundant `initialize` methods.'
+  Enabled: true
+  Safe: false
+  AllowComments: true
+  VersionAdded: '1.27'
+  VersionChanged: '1.28'
+Style/RedundantSelfAssignmentBranch:
+  Description: 'Checks for places where conditional branch makes redundant self-assignment.'
+  Enabled: true
+  VersionAdded: '1.19'
+Style/SelectByRegexp:
+  Description: 'Prefer grep/grep_v to select/reject with a regexp match.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '1.22'
+Style/StringChars:
+  Description: 'Checks for uses of `String#split` with empty string or regexp literal argument.'
+  StyleGuide: '#string-chars'
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.12'
+Style/StringLiterals:
+  Description: 'Checks if uses of quotes match the configured preference.'
+  StyleGuide: '#consistent-string-literals'
+  Enabled: true
+  VersionAdded: '0.9'
+  VersionChanged: '0.36'
+  EnforcedStyle: single_quotes
+  SupportedStyles:
+    - single_quotes
+    - double_quotes
+  # If `true`, strings which span multiple lines using `\` for continuation must
+  # use the same type of quotes on each line.
+  ConsistentQuotesInMultiline: false
+Style/SwapValues:
+  Description: 'Enforces the use of shorthand-style swapping of 2 variables.'
+  StyleGuide: '#values-swapping'
+  Enabled: true
+  VersionAdded: '1.1'
+  SafeAutoCorrect: false
 RSpec/MultipleExpectations:
   Max: 5
 RSpec/NestedGroups:
