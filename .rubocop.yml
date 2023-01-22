@@ -608,6 +608,17 @@ Naming/MethodParameterName:
     - to
   # Forbidden names that will register an offense
   ForbiddenNames: []
+Security/CompoundHash:
+  Description: 'When overwriting Object#hash to combine values, prefer delegating to Array#hash over writing a custom implementation.'
+  Enabled: true
+  VersionAdded: '1.28'
+Security/IoMethods:
+  Description: >-
+                 Checks for the first argument to `IO.read`, `IO.binread`, `IO.write`, `IO.binwrite`,
+                 `IO.foreach`, and `IO.readlines`.
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.22'
 Style/Alias:
   Description: Use alias_method instead of alias.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#alias-method
