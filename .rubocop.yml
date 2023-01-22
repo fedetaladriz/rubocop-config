@@ -13,6 +13,19 @@ Rails:
   Enabled: true
 Performance:
   Enabled: true
+Bundler/GemVersion:
+  Description: 'Requires or forbids specifying gem versions.'
+  Enabled: true
+  VersionAdded: '1.14'
+  EnforcedStyle: 'required'
+  SupportedStyles:
+    - 'required'
+    - 'forbidden'
+  Include:
+    - '**/*.gemfile'
+    - '**/Gemfile'
+    - '**/gems.rb'
+  AllowedGems: []
 Layout/ParameterAlignment:
   Description: Align the parameters of a method call if they span more than one line.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-double-indent
