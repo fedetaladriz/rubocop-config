@@ -55,6 +55,47 @@ Gemspec/RequireMFA:
     - https://guides.rubygems.org/mfa-requirement-opt-in/
   Include:
     - '**/*.gemspec'
+Layout/LineContinuationLeadingSpace:
+  Description: >-
+                  Use trailing spaces instead of leading spaces in strings
+                  broken over multiple lines (by a backslash).
+  Enabled: true
+  AutoCorrect: false
+  SafeAutoCorrect: false
+  VersionAdded: '1.31'
+  VersionChanged: '1.32'
+  EnforcedStyle: trailing
+  SupportedStyles:
+    - leading
+    - trailing
+Layout/LineContinuationSpacing:
+  Description: 'Checks the spacing in front of backslash in line continuations.'
+  Enabled: true
+  AutoCorrect: true
+  SafeAutoCorrect: true
+  VersionAdded: '1.31'
+  EnforcedStyle: space
+  SupportedStyles:
+    - space
+    - no_space
+Layout/LineEndStringConcatenationIndentation:
+  Description: >-
+                 Checks the indentation of the next line after a line that
+                 ends with a string literal and a backslash.
+  Enabled: true
+  VersionAdded: '1.18'
+  EnforcedStyle: aligned
+  SupportedStyles:
+    - aligned
+    - indented
+  # By default the indentation width from `Layout/IndentationWidth` is used,
+  # but it can be overridden by setting this parameter.
+  IndentationWidth: ~
+Layout/SpaceBeforeBrackets:
+  Description: 'Checks for receiver with a space before the opening brackets.'
+  StyleGuide: '#space-in-brackets-access'
+  Enabled: true
+  VersionAdded: '1.7'
 Layout/ParameterAlignment:
   Description: Align the parameters of a method call if they span more than one line.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#no-double-indent
