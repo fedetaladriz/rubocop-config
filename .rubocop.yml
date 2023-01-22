@@ -543,6 +543,71 @@ Layout/ExtraSpacing:
 Naming/AccessorMethodName:
   Description: Check the naming of accessor methods for get_/set_.
   Enabled: false
+Naming/BlockForwarding:
+  Description: 'Use anonymous block forwarding.'
+  StyleGuide: '#block-forwarding'
+  Enabled: pending
+  VersionAdded: '1.24'
+  EnforcedStyle: anonymous
+  SupportedStyles:
+    - anonymous
+    - explicit
+  BlockForwardingName: block
+Naming/InclusiveLanguage:
+  Description: 'Recommend the use of inclusive language instead of problematic terms.'
+  Enabled: false
+  VersionAdded: '1.18'
+  VersionChanged: '1.21'
+  CheckIdentifiers: true
+  CheckConstants: true
+  CheckVariables: true
+  CheckStrings: false
+  CheckSymbols: true
+  CheckComments: true
+  CheckFilepaths: true
+  FlaggedTerms:
+    whitelist:
+      Regex: !ruby/regexp '/white[-_\s]?list/'
+      Suggestions:
+        - allowlist
+        - permit
+    blacklist:
+      Regex: !ruby/regexp '/black[-_\s]?list/'
+      Suggestions:
+        - denylist
+        - block
+    slave:
+      WholeWord: true
+      Suggestions: ['replica', 'secondary', 'follower']
+Naming/MethodParameterName:
+  Description: >-
+                 Checks for method parameter names that contain capital letters,
+                 end in numbers, or do not meet a minimal length.
+  Enabled: true
+  VersionAdded: '0.53'
+  VersionChanged: '0.77'
+  # Parameter names may be equal to or greater than this value
+  MinNameLength: 3
+  AllowNamesEndingInNumbers: true
+  # Allowed names that will not register an offense
+  AllowedNames:
+    - as
+    - at
+    - by
+    - cc
+    - db
+    - id
+    - if
+    - in
+    - io
+    - ip
+    - of
+    - 'on'
+    - os
+    - pp
+    - to
+  # Forbidden names that will register an offense
+  ForbiddenNames: []
 Style/Alias:
   Description: Use alias_method instead of alias.
   StyleGuide: https://github.com/bbatsov/ruby-style-guide#alias-method
