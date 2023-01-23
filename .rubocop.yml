@@ -1085,10 +1085,119 @@ RSpec/NestedGroups:
 RSpec/ExampleLength:
   Max: 15
   CountAsOne: ["array", "hash", "heredoc"]
-RSpec/LetSetup:
-  Enabled: false
 RSpec/ExpectChange:
   Enabled: true
   EnforcedStyle: block
 RSpec/MultipleMemoizedHelpers:
-  Enabled: false
+  Description: Checks if example groups contain too many `let` and `subject` calls.
+  Enabled: pending
+  AllowSubject: true
+  Max: 5
+  VersionAdded: '1.43'
+  StyleGuide: https://rspec.rubystyle.guide/#let-blocks
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/MultipleMemoizedHelpers
+RSpec/BeEq:
+  Description: Check for expectations where `be(...)` can replace `eq(...)`.
+  Enabled: true
+  Safe: false
+  VersionAdded: 2.9.0
+  VersionChanged: '2.16'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeEq
+RSpec/BeNil:
+  Description: Ensures a consistent style is used when matching `nil`.
+  Enabled: true
+  EnforcedStyle: be_nil
+  SupportedStyles:
+    - be
+    - be_nil
+  VersionAdded: 2.9.0
+  VersionChanged: 2.10.0
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/BeNil
+RSpec/ChangeByZero:
+  Description: Prefer negated matchers over `to change.by(0)`.
+  Enabled: true
+  VersionAdded: '2.11'
+  VersionChanged: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ChangeByZero
+RSpec/ClassCheck:
+  Description: Enforces consistent use of `be_a` or `be_kind_of`.
+  StyleGuide: "#is-a-vs-kind-of"
+  Enabled: true
+  VersionAdded: '2.13'
+  EnforcedStyle: be_a
+  SupportedStyles:
+    - be_a
+    - be_kind_of
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ClassCheck
+RSpec/ExcessiveDocstringSpacing:
+  Description: Checks for excessive whitespace in example descriptions.
+  Enabled: true
+  VersionAdded: '2.5'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/ExcessiveDocstringSpacing
+RSpec/IdenticalEqualityAssertion:
+  Description: Checks for equality assertions with identical expressions on both sides.
+  Enabled: true
+  VersionAdded: '2.4'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/IdenticalEqualityAssertion
+RSpec/LetSetup:
+  Description: Checks unreferenced `let!` calls being used for test setup.
+  Enabled: true
+  VersionAdded: '1.7'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/LetSetup
+RSpec/NoExpectationExample:
+  Description: Checks if an example contains any expectation.
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.13'
+  VersionChanged: '2.14'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/NoExpectationExample
+  AllowedPatterns:
+    - "^expect_"
+    - "^assert_"
+RSpec/SubjectDeclaration:
+  Description: Ensure that subject is defined using subject helper.
+  Enabled: true
+  VersionAdded: '2.5'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/SubjectDeclaration
+RSpec/VerifiedDoubleReference:
+  Description: Checks for consistent verified double reference style.
+  Enabled: true
+  SafeAutoCorrect: false
+  EnforcedStyle: constant
+  SupportedStyles:
+    - constant
+    - string
+  VersionAdded: 2.10.0
+  VersionChanged: '2.12'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/VerifiedDoubleReference
+RSpec/VerifiedDoubles:
+  Description: Prefer using verifying doubles over normal doubles.
+  Enabled: true
+  IgnoreNameless: true
+  IgnoreSymbolicNames: false
+  VersionAdded: 1.2.1
+  VersionChanged: '1.5'
+  StyleGuide: https://rspec.rubystyle.guide/#doubles
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/VerifiedDoubles
+RSpec/Rails/AvoidSetupHook:
+  Description: Checks that tests use RSpec `before` hook over Rails `setup` method.
+  Enabled: true
+  VersionAdded: '2.4'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/AvoidSetupHook
+RSpec/FactoryBot/SyntaxMethods:
+  Description: Use shorthands from `FactoryBot::Syntax::Methods` in your specs.
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.7'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/FactoryBot/SyntaxMethods
+RSpec/Rails/AvoidSetupHook:
+  Description: Checks that tests use RSpec `before` hook over Rails `setup` method.
+  Enabled: true
+  VersionAdded: '2.4'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/AvoidSetupHook
+RSpec/Rails/HaveHttpStatus:
+  Description: Checks that tests use `have_http_status` instead of equality matchers.
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.12'
+  Reference: https://www.rubydoc.info/gems/rubocop-rspec/RuboCop/Cop/RSpec/Rails/HaveHttpStatus
