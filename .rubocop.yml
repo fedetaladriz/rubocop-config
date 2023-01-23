@@ -825,6 +825,332 @@ Lint/StructNewOverride:
 Rails/Delegate:
   Description: Prefer delegate method for delegations.
   Enabled: false
+Rails/ActionControllerFlashBeforeRender:
+  Description: 'Use `flash.now` instead of `flash` before `render`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#flash-before-render'
+  Reference: 'https://api.rubyonrails.org/classes/ActionController/FlashBeforeRender.html'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.16'
+Rails/ActionControllerTestCase:
+  Description: 'Use `ActionDispatch::IntegrationTest` instead of `ActionController::TestCase`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#integration-testing'
+  Reference: 'https://api.rubyonrails.org/classes/ActionController/TestCase.html'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.14'
+  Include:
+    - '**/test/**/*.rb'
+Rails/ActiveRecordCallbacksOrder:
+  Description: 'Order callback declarations in the order in which they will be executed.'
+  StyleGuide: 'https://rails.rubystyle.guide/#callbacks-order'
+  Enabled: true
+  VersionAdded: '2.7'
+  Include:
+    - app/models/**/*.rb
+Rails/ActiveSupportOnLoad:
+  Description: 'Use `ActiveSupport.on_load(...)` to patch Rails framework classes.'
+  Enabled: true
+  Reference:
+    - 'https://api.rubyonrails.org/classes/ActiveSupport/LazyLoadHooks.html'
+    - 'https://guides.rubyonrails.org/engines.html#available-load-hooks'
+  SafeAutoCorrect: false
+  VersionAdded: '2.16'
+Rails/AddColumnIndex:
+  Description: >-
+    Rails migrations don't make use of a given `index` key, but also
+    doesn't given an error when it's used, so it makes it seem like an
+    index might be used.
+  Enabled: true
+  VersionAdded: '2.11'
+  Include:
+    - db/migrate/*.rb
+Rails/AfterCommitOverride:
+  Description: >-
+                  Enforces that there is only one call to `after_commit`
+                  (and its aliases - `after_create_commit`, `after_update_commit`,
+                  and `after_destroy_commit`) with the same callback name per model.
+  Enabled: true
+  VersionAdded: '2.8'
+Rails/AttributeDefaultBlockValue:
+  Description: 'Pass method call in block for attribute option `default`.'
+  Enabled: true
+  VersionAdded: '2.9'
+  Include:
+    - 'app/models/**/*'
+Rails/CompactBlank:
+  Description: 'Checks if collection can be blank-compacted with `compact_blank`.'
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.13'
+Rails/DeprecatedActiveModelErrorsMethods:
+  Description: 'Avoid manipulating ActiveModel errors hash directly.'
+  Enabled: true
+  Severity: warning
+  Safe: false
+  VersionAdded: '2.14'
+  VersionChanged: '<<next>>'
+Rails/DotSeparatedKeys:
+  Description: 'Enforces the use of dot-separated keys instead of `:scope` options in `I18n` translation methods.'
+  StyleGuide: 'https://rails.rubystyle.guide/#dot-separated-keys'
+  Enabled: true
+  VersionAdded: '2.15'
+Rails/DuplicateAssociation:
+  Description: "Don't repeat associations in a model."
+  Enabled: true
+  Severity: warning
+  VersionAdded: '2.14'
+  VersionChanged: '<<next>>'
+Rails/DuplicateScope:
+  Description: 'Multiple scopes share this same where clause.'
+  Enabled: true
+  Severity: warning
+  VersionAdded: '2.14'
+  VersionChanged: '<<next>>'
+Rails/DurationArithmetic:
+  Description: 'Do not use duration as arithmetic operand with `Time.current`.'
+  StyleGuide: 'https://rails.rubystyle.guide#duration-arithmetic'
+  Enabled: true
+  VersionAdded: '2.13'
+Rails/EagerEvaluationLogMessage:
+  Description: 'Checks that blocks are used for interpolated strings passed to `Rails.logger.debug`.'
+  Reference: 'https://guides.rubyonrails.org/debugging_rails_applications.html#impact-of-logs-on-performance'
+  Enabled: true
+  VersionAdded: '2.11'
+Rails/ExpandedDateRange:
+  Description: 'Checks for expanded date range.'
+  StyleGuide: 'https://rails.rubystyle.guide/#date-time-range'
+  Enabled: true
+  VersionAdded: '2.11'
+Rails/FindById:
+  Description: >-
+                Favor the use of `find` over `where.take!`, `find_by!`, and `find_by_id!` when you
+                need to retrieve a single record by primary key when you expect it to be found.
+  StyleGuide: 'https://rails.rubystyle.guide/#find'
+  Enabled: true
+  VersionAdded: '2.7'
+Rails/FreezeTime:
+  Description: 'Prefer `freeze_time` over `travel_to` with an argument of the current time.'
+  StyleGuide: 'https://rails.rubystyle.guide/#freeze-time'
+  Enabled: true
+  VersionAdded: '2.16'
+  SafeAutoCorrect: false
+Rails/I18nLazyLookup:
+  Description: 'Checks for places where I18n "lazy" lookup can be used.'
+  StyleGuide: 'https://rails.rubystyle.guide/#lazy-lookup'
+  Reference: 'https://guides.rubyonrails.org/i18n.html#lazy-lookup'
+  Enabled: true
+  VersionAdded: '2.14'
+  Include:
+    - 'app/controllers/**/*.rb'
+Rails/I18nLocaleAssignment:
+  Description: 'Prefer the usage of `I18n.with_locale` instead of manually updating `I18n.locale` value.'
+  Enabled: true
+  VersionAdded: '2.11'
+  Include:
+    - spec/**/*.rb
+    - test/**/*.rb
+Rails/I18nLocaleTexts:
+  Description: 'Enforces use of I18n and locale files instead of locale specific strings.'
+  StyleGuide: 'https://rails.rubystyle.guide/#locale-texts'
+  Enabled: true
+  VersionAdded: '2.14'
+Rails/Inquiry:
+  Description: "Prefer Ruby's comparison operators over Active Support's `Array#inquiry` and `String#inquiry`."
+  StyleGuide: 'https://rails.rubystyle.guide/#inquiry'
+  Enabled: true
+  VersionAdded: '2.7'
+Rails/MailerName:
+  Description: 'Mailer should end with `Mailer` suffix.'
+  StyleGuide: 'https://rails.rubystyle.guide/#mailer-name'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.7'
+  Include:
+    - app/mailers/**/*.rb
+Rails/MatchRoute:
+  Description: >-
+                  Don't use `match` to define any routes unless there is a need to map multiple request types
+                  among [:get, :post, :patch, :put, :delete] to a single action using the `:via` option.
+  StyleGuide: 'https://rails.rubystyle.guide/#no-match-routes'
+  Enabled: true
+  VersionAdded: '2.7'
+  Include:
+    - config/routes.rb
+    - config/routes/**/*.rb
+Rails/MigrationClassName:
+  Description: 'The class name of the migration should match its file name.'
+  Enabled: true
+  VersionAdded: '2.14'
+  Include:
+    - db/migrate/*.rb
+Rails/NegateInclude:
+  Description: 'Prefer `collection.exclude?(obj)` over `!collection.include?(obj)`.'
+  StyleGuide: 'https://rails.rubystyle.guide#exclude'
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.7'
+  VersionChanged: '2.9'
+Rails/OrderById:
+  Description: >-
+                  Do not use the `id` column for ordering.
+                  Use a timestamp column to order chronologically.
+  StyleGuide: 'https://rails.rubystyle.guide/#order-by-id'
+  Enabled: true
+  VersionAdded: '2.8'
+Rails/Pluck:
+  Description: 'Prefer `pluck` over `map { ... }`.'
+  StyleGuide: 'https://rails.rubystyle.guide#pluck'
+  Enabled: true
+  VersionAdded: '2.7'
+Rails/PluckInWhere:
+  Description: 'Use `select` instead of `pluck` in `where` query methods.'
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.7'
+  VersionChanged: '2.8'
+  EnforcedStyle: conservative
+  SupportedStyles:
+    - conservative
+    - aggressive
+Rails/RedundantPresenceValidationOnBelongsTo:
+  Description: 'Checks for redundant presence validation on belongs_to association.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.13'
+Rails/RedundantTravelBack:
+  Description: Checks for redundant `travel_back` calls.
+  Enabled: true
+  VersionAdded: '2.12'
+  Include:
+    - spec/**/*.rb
+    - test/**/*.rb
+Rails/RenderInline:
+  Description: 'Prefer using a template over inline rendering.'
+  StyleGuide: 'https://rails.rubystyle.guide/#inline-rendering'
+  Enabled: true
+  VersionAdded: '2.7'
+Rails/RenderPlainText:
+  Description: 'Prefer `render plain:` over `render text:`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#plain-text-rendering'
+  Enabled: true
+  VersionAdded: '2.7'
+  # Convert only when `content_type` is explicitly set to `text/plain`.
+  ContentTypeCompatibility: true
+Rails/RootJoinChain:
+  Description: 'Use a single `#join` instead of chaining on `Rails.root` or `Rails.public_path`.'
+  Enabled: true
+  VersionAdded: '2.13'
+Rails/RootPathnameMethods:
+  Description: 'Use `Rails.root` IO methods instead of passing it to `File`.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.16'
+Rails/RootPublicPath:
+  Description: "Favor `Rails.public_path` over `Rails.root` with `'public'`."
+  Enabled: true
+  VersionAdded: '2.15'
+Rails/ShortI18n:
+  Description: 'Use the short form of the I18n methods: `t` instead of `translate` and `l` instead of `localize`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#short-i18n'
+  Enabled: true
+  VersionAdded: '2.7'
+  EnforcedStyle: conservative
+  SupportedStyles:
+    - conservative
+    - aggressive
+Rails/SquishedSQLHeredocs:
+  Description: 'Checks SQL heredocs to use `.squish`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#squished-heredocs'
+  Enabled: true
+  VersionAdded: '2.8'
+  VersionChanged: '2.9'
+  # Some SQL syntax (e.g. PostgreSQL comments and functions) requires newlines
+  # to be preserved in order to work, thus autocorrection is not safe.
+  SafeAutoCorrect: false
+Rails/StripHeredoc:
+  Description: 'Enforces the use of squiggly heredoc over `strip_heredoc`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#prefer-squiggly-heredoc'
+  Enabled: true
+  VersionAdded: '2.15'
+Rails/TimeZoneAssignment:
+  Description: 'Prefer the usage of `Time.use_zone` instead of manually updating `Time.zone` value.'
+  Reference: 'https://thoughtbot.com/blog/its-about-time-zones'
+  Enabled: true
+  VersionAdded: '2.10'
+  Include:
+    - spec/**/*.rb
+    - test/**/*.rb
+Rails/ToFormattedS:
+  Description: 'Checks for consistent uses of `to_fs` or `to_formatted_s`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#prefer-to-fs'
+  Enabled: true
+  EnforcedStyle: to_fs
+  SupportedStyles:
+    - to_fs
+    - to_formatted_s
+  VersionAdded: '2.15'
+Rails/ToSWithArgument:
+  Description: 'Identifies passing any argument to `#to_s`.'
+  Enabled: true
+  Safe: false
+  VersionAdded: '2.16'
+Rails/TopLevelHashWithIndifferentAccess:
+  Description: 'Identifies top-level `HashWithIndifferentAccess`.'
+  Reference: 'https://guides.rubyonrails.org/upgrading_ruby_on_rails.html#top-level-hashwithindifferentaccess-is-soft-deprecated'
+  Enabled: true
+  Severity: warning
+  VersionAdded: '2.16'
+  VersionChanged: '<<next>>'
+Rails/TransactionExitStatement:
+  Description: 'Avoid the usage of `return`, `break` and `throw` in transaction blocks.'
+  Reference:
+    - https://github.com/rails/rails/commit/15aa4200e083
+  Enabled: true
+  VersionAdded: '2.14'
+Rails/UniqBeforePluck:
+  Description: 'Prefer the use of uniq or distinct before pluck.'
+  Enabled: true
+  VersionAdded: '0.40'
+  VersionChanged: '2.13'
+  EnforcedStyle: aggresive
+  SupportedStyles:
+    - conservative
+    - aggressive
+  SafeAutoCorrect: false
+Rails/UnusedIgnoredColumns:
+  Description: 'Remove a column that does not exist from `ignored_columns`.'
+  Enabled: true
+  VersionAdded: '2.11'
+  Include:
+    - app/models/**/*.rb
+Rails/WhereEquals:
+  Description: 'Pass conditions to `where` as a hash instead of manually constructing SQL.'
+  StyleGuide: 'https://rails.rubystyle.guide/#hash-conditions'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '2.9'
+  VersionChanged: '2.10'
+Rails/WhereExists:
+  Description: 'Prefer `exists?(...)` over `where(...).exists?`.'
+  Enabled: true
+  SafeAutoCorrect: false
+  EnforcedStyle: where
+  SupportedStyles:
+    - exists
+    - where
+  VersionAdded: '2.7'
+  VersionChanged: '2.10'
+Rails/WhereMissing:
+  Description: 'Use `where.missing(...)` to find missing relationship records.'
+  StyleGuide: 'https://rails.rubystyle.guide/#finding-missing-relationship-records'
+  Enabled: true
+  VersionAdded: '2.16'
+Rails/WhereNot:
+  Description: 'Use `where.not(...)` instead of manually constructing negated SQL in `where`.'
+  StyleGuide: 'https://rails.rubystyle.guide/#hash-conditions'
+  Enabled: true
+  VersionAdded: '2.8'
 Performance/RedundantBlockCall:
   Description: Use `yield` instead of `block.call`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#proccall-vs-yield-code
