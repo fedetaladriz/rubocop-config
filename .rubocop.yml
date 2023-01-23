@@ -1155,6 +1155,97 @@ Performance/RedundantBlockCall:
   Description: Use `yield` instead of `block.call`.
   Reference: https://github.com/JuanitoFatas/fast-ruby#proccall-vs-yield-code
   Enabled: false
+Performance/AncestorsInclude:
+  Description: 'Use `A <= B` instead of `A.ancestors.include?(B)`.'
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#ancestorsinclude-vs--code'
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.7'
+Performance/BigDecimalWithNumericArgument:
+  Description: 'Convert numeric literal to string and pass it to `BigDecimal`.'
+  Enabled: true
+  VersionAdded: '1.7'
+Performance/BlockGivenWithExplicitBlock:
+  Description: 'Check block argument explicitly instead of using `block_given?`.'
+  Enabled: true
+  VersionAdded: '1.9'
+Performance/CollectionLiteralInLoop:
+  Description: 'Extract Array and Hash literals outside of loops into local variables or constants.'
+  Enabled: true
+  VersionAdded: '1.8'
+  # Min number of elements to consider an offense
+  MinSize: 1
+Performance/ConcurrentMonotonicTime:
+  Description: 'Use `Process.clock_gettime(Process::CLOCK_MONOTONIC)` instead of `Concurrent.monotonic_time`.'
+  Reference: 'https://github.com/rails/rails/pull/43502'
+  Enabled: true
+  VersionAdded: '1.12'
+Performance/ConstantRegexp:
+  Description: 'Finds regular expressions with dynamic components that are all constants.'
+  Enabled: true
+  VersionAdded: '1.9'
+  VersionChanged: '1.10'
+Performance/MapCompact:
+  Description: 'Use `filter_map` instead of `collection.map(&:do_something).compact`.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '1.11'
+Performance/MethodObjectAsBlock:
+  Description: 'Use block explicitly instead of block-passing a method object.'
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#normal-way-to-apply-method-vs-method-code'
+  Enabled: true
+  VersionAdded: '1.9'
+Performance/RedundantEqualityComparisonBlock:
+  Description: >-
+                  Checks for uses `Enumerable#all?`, `Enumerable#any?`, `Enumerable#one?`,
+                  or `Enumerable#none?` are compared with `===` or similar methods in block.
+  Reference: 'https://github.com/rails/rails/pull/41363'
+  Enabled: true
+  Safe: false
+  VersionAdded: '1.10'
+Performance/RedundantSortBlock:
+  Description: 'Use `sort` instead of `sort { |a, b| a <=> b }`.'
+  Enabled: true
+  VersionAdded: '1.7'
+Performance/RedundantSplitRegexpArgument:
+  Description: 'Identifies places where `split` argument can be replaced from a deterministic regexp to a string.'
+  Enabled: true
+  VersionAdded: '1.10'
+Performance/RedundantStringChars:
+  Description: 'Checks for redundant `String#chars`.'
+  Enabled: true
+  VersionAdded: '1.7'
+Performance/ReverseFirst:
+  Description: 'Use `last(n).reverse` instead of `reverse.first(n)`.'
+  Enabled: true
+  VersionAdded: '1.7'
+Performance/SortReverse:
+  Description: 'Use `sort.reverse` instead of `sort { |a, b| b <=> a }`.'
+  Enabled: true
+  VersionAdded: '1.7'
+Performance/Squeeze:
+  Description: "Use `squeeze('a')` instead of `gsub(/a+/, 'a')`."
+  Reference: 'https://github.com/JuanitoFatas/fast-ruby#remove-extra-spaces-or-other-contiguous-characters-code'
+  Enabled: true
+  VersionAdded: '1.7'
+Performance/StringIdentifierArgument:
+  Description: 'Use symbol identifier argument instead of string identifier argument.'
+  Enabled: true
+  VersionAdded: '1.13'
+Performance/StringInclude:
+  Description: 'Use `String#include?` instead of a regex match with literal-only pattern.'
+  Enabled: true
+  SafeAutoCorrect: false
+  VersionAdded: '1.7'
+  VersionChanged: '1.12'
+Performance/Sum:
+  Description: 'Use `sum` instead of a custom array summation.'
+  SafeAutoCorrect: false
+  Reference: 'https://blog.bigbinary.com/2016/11/02/ruby-2-4-introduces-enumerable-sum.html'
+  Enabled: true
+  VersionAdded: '1.8'
+  VersionChanged: '1.13'
+  OnlySumOrWithInitialValue: false
 Style/OptionalBooleanParameter:
   Description: 'Use keyword arguments when defining method with boolean argument.'
   Enabled: false
