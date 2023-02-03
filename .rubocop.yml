@@ -1,14 +1,3 @@
-AllCops:
-  Exclude:
-  - "vendor/**/*"
-  - "db/**/*"
-  - "bin/**/*"
-  TargetRubyVersion: 3.2
-  NewCops: disable
-Rails:
-  Enabled: true
-Performance:
-  Enabled: true
 Bundler/GemVersion:
   Description: 'Requires or forbids specifying gem versions.'
   Enabled: true
